@@ -1,6 +1,6 @@
 const {MongoClient} = require("mongodb")
 
-const CONNECTION = "mongodb+srv://AttendanceMonitor:Hardish123@somecluster.zryzm.mongodb.net/?retryWrites=true&w=majority&appName=someCluster"
+const CONNECTION = "mongodb+srv://AttendanceMonitor:(password)@somecluster.zryzm.mongodb.net/?retryWrites=true&w=majority&appName=someCluster"
 const mongo = new MongoClient(CONNECTION)
 
 async function connect(){
