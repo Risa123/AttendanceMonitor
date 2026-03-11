@@ -1,12 +1,12 @@
 const {MongoClient} = require("mongodb")
 
-const CONNECTION = "mongodb+srv://attendanceMonitor:testX24@somecluster.zryzm.mongodb.net/?retryWrites=true&w=majority&appName=someCluster"
+const CONNECTION = "mongodb+srv://AttendanceMonitor:Hardish123@somecluster.zryzm.mongodb.net/?retryWrites=true&w=majority&appName=someCluster"
 const mongo = new MongoClient(CONNECTION)
 
 async function connect(){
   try{
     await mongo.connect()
-    let database = mongo.db("subjectTermMan")
+    let database = mongo.db("AttendanceMonitor")
   }catch(e){
     await close()
     throw e
