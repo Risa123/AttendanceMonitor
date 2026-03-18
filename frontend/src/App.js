@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 
 import AccessPoint from "./accessPoint/AccessPoint"
-import Access from "./access/Access"
+import AccessLog from "./accessLog/AccessLog"
 
 export default function App() {
   return (
@@ -20,7 +20,7 @@ export default function App() {
                <AccessPoint name = "access point test"/>
             </Col>
             <Col>
-              <Access/>
+              <AccessLog name = "test access"/>
             </Col>
          </Row>
       </Container>
