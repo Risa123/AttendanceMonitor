@@ -7,8 +7,8 @@ import Row from"react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 
-import AccessPoint from "./accessPoint/AccessPoint"
-import AccessLog from "./accessLog/AccessLog"
+import AttendanceLog from "./attendanceLog/AttendanceLog"
+import CardReader from "./cardreader/CardReader"
 
 export default function App() {
   return (
@@ -17,10 +17,11 @@ export default function App() {
          <Row>
             <Col>
                <Button variant = "primary">add access point</Button>
-               <AccessPoint name = "access point test"/>
+               <CardReader name = "main entrance reader"/>
             </Col>
             <Col>
-              <AccessLog name = "test access"/>
+              <AttendanceLog name = "Student1" time = "1.1.2025 12:00" cardReader = "main entrance"/>
+              <AttendanceLog name = "Student2" time = "1.1.2025 11:00" cardReader = "main entrance"/>
             </Col>
          </Row>
       </Container>
