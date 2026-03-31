@@ -9,10 +9,12 @@ import Button from "react-bootstrap/Button"
 
 import AttendanceLog from "./attendanceLog/AttendanceLog"
 import CardReader from "./cardreader/CardReader"
+import AddCardReader from "./cardreader/AddCardReader"
 
 export default function App() {
   return (
     <div className="App">
+      <AddCardReader show = {false}/>
       <Container>
          <Row>
             <Col>
@@ -21,7 +23,6 @@ export default function App() {
             </Col>
             <Col>
               <AttendanceLog name = "Student1" time = "1.1.2025 12:00" cardReader = "main entrance"/>
-              <AttendanceLog name = "Student2" time = "1.1.2025 11:00" cardReader = "main entrance"/>
             </Col>
          </Row>
       </Container>
