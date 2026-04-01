@@ -1,7 +1,13 @@
 import Table from "react-bootstrap/Table"
 
 
-export default function AttendanceLog({name,time,cardReader}) {
+export default function AttendanceLog() {
+    const components = []
+    components.push( <tr>
+      <th>Richard Horák</th>
+      <th>1.1.2026 11:00</th>
+      <th>Main Entrace</th>
+    </tr>)
     return <Table>
        <thead>
           <tr>
@@ -11,11 +17,7 @@ export default function AttendanceLog({name,time,cardReader}) {
           </tr>
        </thead>
        <tbody>
-         <tr>
-           <th>{name}</th>
-           <th>{time}</th>
-           <th>{cardReader}</th>
-         </tr>
+        {components}
        </tbody>
     </Table>
 }

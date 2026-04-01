@@ -35,7 +35,7 @@ export default function App() {
                  <option>this week</option>
               </Form.Select>
                <AttedanceLogProvider>
-                
+                <AttendanceLog/>
                </AttedanceLogProvider>
             </Col>
          </Row>
