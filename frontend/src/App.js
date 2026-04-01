@@ -11,27 +11,36 @@ import Form from "react-bootstrap/Form"
 import AttendanceLog from "./attendanceLog/AttendanceLog"
 import CardReader from "./cardreader/CardReader"
 import AddCardReader from "./cardreader/AddCardReader"
+import UserProvider from "./UserProvider"
+import CardReaderProvider from "./cardreader/CardReaderProvider"
+import AttedanceLogProvider from "./attendanceLog/AttendanceLogProvider"
 
 export default function App() {
   return (
     <div className="App">
+      <UserProvider>
       <AddCardReader show = {false}/>
       <Container>
          <Row>
             <Col>
                <Button variant = "primary">Add Card Reader</Button>
                <Button variant= "secondary">Login</Button>
-               <CardReader name = "main entrance reader"/>
+              <CardReaderProvider>
+                
+              </CardReaderProvider>
             </Col>
             <Col>
               <Form.Select>
                  <option>this day</option>
                  <option>this week</option>
               </Form.Select>
-              <AttendanceLog name = "Student1" time = "1.1.2025 12:00" cardReader = "main entrance"/>
+               <AttedanceLogProvider>
+                
+               </AttedanceLogProvider>
             </Col>
          </Row>
       </Container>
+      </UserProvider>
     </div>
   )
 }
