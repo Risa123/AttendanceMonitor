@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
 import Form from "react-bootstrap/Form"
 
-export default function AddCardReader({show}) {
+export default function AddCardReader({show,setShow}) {
     return <Modal show = {show}>
          <Modal.Header>
             <Modal.Title>Add Card Reader</Modal.Title>
@@ -16,8 +16,8 @@ export default function AddCardReader({show}) {
            </Form>
          </Modal.Body>
          <Modal.Footer>
-            <Button variant = "primary">Add</Button>
-            <Button variant = "secondary">Close</Button>
+            <Button variant = "primary" onClick = {_ => setShow(false)}>Add</Button>
+            <Button variant = "secondary" onClick = {_ => setShow(false)}>Close</Button>
          </Modal.Footer>
     </Modal>
 }

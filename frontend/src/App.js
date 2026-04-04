@@ -14,16 +14,18 @@ import AddCardReader from "./cardreader/AddCardReader"
 import UserProvider from "./UserProvider"
 import CardReaderProvider from "./cardreader/CardReaderProvider"
 import AttedanceLogProvider from "./attendanceLog/AttendanceLogProvider"
+import {useState} from "react"
 
 export default function App() {
+  const [showAddCardReader,setShowAddCardReader] = useState(false)
   return (
     <div className="App">
       <UserProvider>
-      <AddCardReader show = {false}/>
+      <AddCardReader show = {showAddCardReader} setShow = {setShowAddCardReader}/>
       <Container>
          <Row>
             <Col>
-               <Button variant = "primary">Add Card Reader</Button>
+               <Button variant = "primary" onClick = {_ => setShowAddCardReader(true)}>Add Card Reader</Button>
                <Button variant= "secondary">Login</Button>
               <CardReaderProvider>
                 

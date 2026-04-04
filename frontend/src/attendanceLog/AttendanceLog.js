@@ -1,5 +1,7 @@
+import {useContext} from "react"
 import Table from "react-bootstrap/Table"
 
+import AttendanceLogProvider from "./AttendanceLogProvider"
 
 export default function AttendanceLog() {
     const components = []
