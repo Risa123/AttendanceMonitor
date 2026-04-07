@@ -1,7 +1,12 @@
 const {MongoClient} = require("mongodb")
 
+const dns = require("dns");
+
+
 const CONNECTION = "mongodb+srv://AttendanceMonitor:test@somecluster.zryzm.mongodb.net/?appName=someCluster"
 const mongo = new MongoClient(CONNECTION)
+
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 async function connect(){
   try{
