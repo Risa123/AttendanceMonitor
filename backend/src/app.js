@@ -1,5 +1,6 @@
 const express = require("express")
 const {close, connect} = require("./database")
+const {post} = require("./common")
 
 const PORT = 8000
 const app = express()
@@ -11,5 +12,7 @@ app.listen(PORT,() => {
     connect()
     console.log(`server listening on port ${PORT}`)
 })
+
+post(app, "attendanceLog/add")
 
 process.on("beforeExit", _ => close())

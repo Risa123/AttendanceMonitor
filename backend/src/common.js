@@ -1,5 +1,5 @@
 const Ajv = require("ajv");
-const {ObjectNotFoundException} = require("./database")
+const {ObjectNotFoundException, UserNotAuthorisedException} = require("./database")
 
 const ajv = new Ajv()
 require("ajv-formats")(ajv)
@@ -40,4 +40,8 @@ function route(req,res,validate,successCode,abl){
   }
 }
 
-module.exports = {OK,CREATED,compileValidation,STRING_MAX,route}
+function post(app, name) {
+  app.post("/" + name, require("./" + name + "/route"))
+}
+
+module.exports = {OK,CREATED,compileValidation,STRING_MAX,route, post}

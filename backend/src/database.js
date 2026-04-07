@@ -2,16 +2,19 @@ const {MongoClient} = require("mongodb")
 
 const dns = require("dns");
 
-
 const CONNECTION = "mongodb+srv://AttendanceMonitor:test@somecluster.zryzm.mongodb.net/?appName=someCluster"
 const mongo = new MongoClient(CONNECTION)
 
-dns.setServers(['8.8.8.8', '8.8.4.4']);
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
+let database = null
+let attedanceLog = null
 
 async function connect(){
   try{
     await mongo.connect()
-    let database = mongo.db("AttendanceMonitor")
+    database = mongo.db("AttendanceMonitor")
+    attedanceLog = database.collection("attedanceLog")
   }catch(e){
     await close()
     throw e
@@ -28,4 +31,14 @@ class ObjectNotFoundException extends Error{
   }
 }
 
-module.exports = {connect,close,ObjectNotFoundException}
+class UserNotAuthorisedException extends Error{
+   constructor(message) {
+     super(message)
+   }
+}
+
+function getAttendanceLog() {
+   return attedanceLog
+}
+
+module.exports = {connect,close,ObjectNotFoundException, getAttendanceLog, UserNotAuthorisedException}
