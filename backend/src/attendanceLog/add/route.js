@@ -8,13 +8,21 @@ const validate = compileValidation({
             type:"string",
             format:"uuid"
         },
+        card:{
+            type:"string",
+            format:"uuid"
+        },
         cardReader:{
             type:"string",
             format:"uuid"
+        },
+        time:{
+            type:"string",
+            format:"date-time"
         }
     },
     additionalProperties:false,
-    required:["user", "cardReader"]
+    required:["user", "cardReader","time", "card"]
 })
 
 module.exports = (req, res) => route(req, res, validate, OK, abl)
