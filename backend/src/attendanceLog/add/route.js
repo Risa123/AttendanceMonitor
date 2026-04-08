@@ -14,7 +14,7 @@ const validate = compileValidation({
         }
     },
     additionalProperties:false,
-    required:["name", "cardReader"]
+    required:["user", "cardReader"]
 })
 
 module.exports = (req, res) => route(req, res, validate, OK, abl)

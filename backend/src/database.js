@@ -9,12 +9,14 @@ dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 let database = null
 let attedanceLog = null
+let cardReaders = null
 
 async function connect(){
   try{
     await mongo.connect()
     database = mongo.db("AttendanceMonitor")
     attedanceLog = database.collection("attedanceLog")
+    cardReaders = database.collection("cardReaders")
   }catch(e){
     await close()
     throw e
@@ -41,4 +43,8 @@ function getAttendanceLog() {
    return attedanceLog
 }
 
-module.exports = {connect,close,ObjectNotFoundException, getAttendanceLog, UserNotAuthorisedException}
+function getCardReaders() {
+  return cardReaders
+}
+
+module.exports = {connect,close,ObjectNotFoundException, getAttendanceLog, UserNotAuthorisedException, getCardReaders}

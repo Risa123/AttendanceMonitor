@@ -44,4 +44,8 @@ function post(app, name) {
   app.post("/" + name, require("./" + name + "/route"))
 }
 
-module.exports = {OK,CREATED,compileValidation,STRING_MAX,route, post}
+function get(app, name) {
+   app.get("/" + name, require("./" + name + "/route"))
+}
+
+module.exports = {OK,CREATED,compileValidation,STRING_MAX,route, post, get}
