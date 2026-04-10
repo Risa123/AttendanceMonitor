@@ -11,10 +11,10 @@ import Form from "react-bootstrap/Form"
 import AttendanceLog from "./attendanceLog/AttendanceLog"
 import CardReader from "./cardreader/CardReader"
 import AddCardReader from "./cardreader/AddCardReader"
-import UserProvider from "./UserProvider"
-import CardReaderProvider from "./cardreader/CardReaderProvider"
-import AttedanceLogProvider from "./attendanceLog/AttendanceLogProvider"
+import {UserProvider} from "./UserProvider"
+import {CardReaderProvider} from "./cardreader/CardReaderProvider"
 import {useState} from "react"
+import { AttendanceLogProvider } from "./attendanceLog/AttendanceLogProvider"
 
 export default function App() {
   const [showAddCardReader,setShowAddCardReader] = useState(false)
@@ -36,9 +36,9 @@ export default function App() {
                  <option>this day</option>
                  <option>this week</option>
               </Form.Select>
-               <AttedanceLogProvider>
-                <AttendanceLog/>
-               </AttedanceLogProvider>
+               <AttendanceLogProvider>
+                  <AttendanceLog/>
+               </AttendanceLogProvider>
             </Col>
          </Row>
       </Container>

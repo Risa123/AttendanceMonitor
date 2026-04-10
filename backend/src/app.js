@@ -15,5 +15,7 @@ app.listen(PORT,() => {
 
 post(app, "attendanceLog/add")
 get(app, "attendanceLog/list")
+post(app, "cardReader/add")
+get(app, "cardReader/list")
 
 process.on("beforeExit", _ => close())
