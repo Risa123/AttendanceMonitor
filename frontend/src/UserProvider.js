@@ -3,7 +3,9 @@ import {createContext} from "react";
 const UserContext = createContext()
 
 export function UserProvider(props) {
-  const value = {}
+  const value = {
+    
+  }
   return <UserContext.Provider value = {value}>{props.children}</UserContext.Provider>
 }
 

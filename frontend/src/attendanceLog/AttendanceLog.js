@@ -1,15 +1,23 @@
-import {useContext} from "react"
+import {useContext, useEffect, useState} from "react"
 import Table from "react-bootstrap/Table"
-
-import AttendanceLogProvider from "./AttendanceLogProvider"
+import AttendanceLogContext from "./AttendanceLogProvider"
 
 export default function AttendanceLog() {
-    const components = []
-    components.push( <tr>
-      <th>Richard Horák</th>
-      <th>1.1.2026 11:00</th>
-      <th>Main Entrace</th>
-    </tr>)
+    const [components, setComponents] = useState([])
+    const AttendanceLogProvider = useContext(AttendanceLogContext)
+    const data = AttendanceLogProvider.list()
+    useEffect(() => {
+      data.then(data => {
+         for (const log of data) {
+            components.push(<tr>
+                   <th>{log.user}</th>
+                   <th>{log.time}</th>
+                   <th>{log.cardReader}</th>
+               </tr>)
+          }
+          setComponents(components)
+       })
+    },[AttendanceLogProvider, components, data])
     return <Table>
        <thead>
           <tr>
