@@ -8,6 +8,7 @@ export default function AttendanceLog() {
     const data = AttendanceLogProvider.list()
     useEffect(() => {
       data.then(data => {
+         components.length = 0 //empty the list
          for (const log of data) {
             components.push(<tr>
                    <th>{log.user}</th>

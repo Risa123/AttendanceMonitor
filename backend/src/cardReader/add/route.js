@@ -7,11 +7,14 @@ const validate = compileValidation({
         name:{
             type:"string",
             minLength:1,
-            maxLength:STRING_MAX
+        },
+        clientSecret: {
+            type:"string",
+            minLength:1
         }
     },
     additionalProperties:false,
-    required:["name"]
+    required:["name", "clientSecret"]
 })
 
 module.exports = (req, res) => route(req, res, validate, OK, abl)
