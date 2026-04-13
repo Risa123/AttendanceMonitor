@@ -15,25 +15,27 @@ import {CardReaderProvider} from "./cardreader/CardReaderProvider"
 import {useState} from "react"
 import { AttendanceLogProvider } from "./attendanceLog/AttendanceLogProvider"
 import CardReader from "./cardreader/CardReader"
+import Login from "./Login"
 
 export default function App() {
   const [showAddCardReader,setShowAddCardReader] = useState(false)
+  const [logPeriod, setLogPeriod] = useState("day")
   return (
-    <div className="App">
+    <div className = "App">
       <UserProvider>
       <CardReaderProvider>
       <AddCardReader show = {showAddCardReader} setShow = {setShowAddCardReader}/>
+      <Login/>
       <Container>
          <Row>
             <Col>
                <Button variant = "primary" onClick = {_ => setShowAddCardReader(true)}>Add Card Reader</Button>
-               <Button variant= "secondary">Login</Button>
                <CardReader/>
             </Col>
             <Col>
-              <Form.Select>
-                 <option>this day</option>
-                 <option>this week</option>
+              <Form.Select value = {logPeriod} onChange = {e => setLogPeriod(e.target.value)}>
+                 <option>day</option>
+                 <option>week</option>
               </Form.Select>
                <AttendanceLogProvider>
                   <AttendanceLog/>

@@ -1,7 +1,7 @@
 import  { createContext, useContext } from "react"
 import { get } from "../requestCommon"
 
-import  CardReaderContext  from  "../cardreader/CardReaderProvider"
+import CardReaderContext from  "../cardreader/CardReaderProvider"
 
 const AttendanceLogContext = createContext()
 

@@ -1,14 +1,17 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 
-import CardReaderContext  from "./CardReaderProvider"
+import CardReaderContext from "./CardReaderProvider"
 
 export default function CardReader(){
-    const list = []
+    const [list, setList] = useState([])
     const CardReaderProvider = useContext(CardReaderContext)
-    CardReaderProvider.list().then(cardReaders => {
+    useEffect(() => {
+        CardReaderProvider.list().then(cardReaders => {
+        list.length = 0 // clear list
         for (const cardReader of cardReaders) {
             list.push(cardReader.name)
         }
-    })
+        setList(list)
+    })},[CardReaderProvider, list])
     return <div>{list}</div>
 }
