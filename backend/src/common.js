@@ -17,23 +17,18 @@ function compileValidation(scheme){
 
 function route(req,res,validate,successCode,abl){
   if(validate(req.body)){
-     if (req.headers.authorisation) {
-      abl(req.body).then(data => res.status(successCode).json(data)).catch(e =>{
-        if(e instanceof ObjectNotFoundException){
-          console.error(e.message)
-          res.status(NOT_FOUND).send(e.message)
-        }else if(e instanceof UserNotAuthorisedException){
-          console.error(e.message)
-          res.status(UNAUTHORISED).send(e.message)
-        }else{
-         console.error(e.stack)
-         res.sendStatus(INTERNAL_ERROR)
-        }
-      })
-     } else {
-       res.status(BAD_REQUEST).send("no autorisation")
-       console.error("no autorisation")
-     }
+    abl(req).then(data => res.status(successCode).json(data)).catch(e =>{
+      if(e instanceof ObjectNotFoundException){
+        console.error(e.message)
+        res.status(NOT_FOUND).send(e.message)
+      }else if(e instanceof UserNotAuthorisedException){
+        console.error(e.message)
+        res.status(UNAUTHORISED).send(e.message)
+      }else{
+       console.error(e.stack)
+       res.sendStatus(INTERNAL_ERROR)
+      }
+    })
   }else{
     const errors = []
     for(const err of validate.errors){

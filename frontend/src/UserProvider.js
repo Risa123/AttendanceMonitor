@@ -1,4 +1,5 @@
 import {createContext, useState} from "react"
+import {post} from "./requestCommon"
 
 const UserContext = createContext()
 
@@ -6,8 +7,11 @@ export function UserProvider(props) {
   const [user, setUser] = useState(null)
   const value = {
      getUser:() => user,
-     login:(name, password) => setUser({name: name, password: password}),
-     logoff:() => setUser(null)
+     login:async (name, password) => setUser(await post("user/login",{},name + ":" + password)),
+     logoff:async() => {
+       await post("user/logoff",{}, user)
+       setUser(null)
+     }
   }
   return <UserContext.Provider value = {value}>{props.children}</UserContext.Provider>
 }
