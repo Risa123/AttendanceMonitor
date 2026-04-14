@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from "react"
+import ListGroupItem from "react-bootstrap/esm/ListGroupItem"
+import ListGroup from "react-bootstrap/ListGroup"
 
 import CardReaderContext from "./CardReaderProvider"
 
@@ -9,9 +11,9 @@ export default function CardReader(){
         CardReaderProvider.list().then(cardReaders => {
         list.length = 0 // clear list
         for (const cardReader of cardReaders) {
-            list.push(cardReader.name)
+            list.push(<ListGroupItem>{cardReader.name}</ListGroupItem>)
         }
         setList(list)
     })},[CardReaderProvider, list])
-    return <div>{list}</div>
+    return <ListGroup>{list}</ListGroup>
 }

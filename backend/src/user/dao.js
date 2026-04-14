@@ -3,7 +3,6 @@ const {getUsers, ObjectNotFoundException} = require("../database")
 async function login(name, password) {
   const authToken = crypto.randomUUID()
   const result = await getUsers().updateOne({name:name, password:password},{"$set":{authToken: authToken}})
-  console.log(result)
   if (result.matchedCount == 0) {
     throw new ObjectNotFoundException("user not found")
   }
@@ -17,4 +16,8 @@ async function logoff(token) {
     }
 }
 
-module.exports = {login, logoff}
+async function list(filter) {
+  return await (await getUsers().find(filter)).toArray()
+}
+
+module.exports = {login, logoff, list}

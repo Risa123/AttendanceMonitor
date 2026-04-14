@@ -19,5 +19,6 @@ post(app, "cardReader/add")
 get(app, "cardReader/list")
 post(app, "user/login")
 post(app, "user/logoff")
+get(app, "user/listStudents")
 
 process.on("beforeExit", _ => close())

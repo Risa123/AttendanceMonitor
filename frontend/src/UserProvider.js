@@ -1,5 +1,5 @@
 import {createContext, useState} from "react"
-import {post} from "./requestCommon"
+import {post, get} from "./requestCommon"
 
 const UserContext = createContext()
 
@@ -11,7 +11,8 @@ export function UserProvider(props) {
      logoff:async() => {
        await post("user/logoff",{}, user)
        setUser(null)
-     }
+     },
+     listAtendees:async () => await get("user/listStudents",{})
   }
   return <UserContext.Provider value = {value}>{props.children}</UserContext.Provider>
 }
