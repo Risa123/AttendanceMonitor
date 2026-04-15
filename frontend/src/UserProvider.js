@@ -12,7 +12,7 @@ export function UserProvider(props) {
        await post("user/logoff",{}, user)
        setUser(null)
      },
-     listAtendees:async () => await get("user/listStudents",{})
+     listAtendees:async () => await get("user/listAttendees",{})
   }
   return <UserContext.Provider value = {value}>{props.children}</UserContext.Provider>
 }
