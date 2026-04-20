@@ -17,9 +17,10 @@ import { AttendanceLogProvider } from "./attendanceLog/AttendanceLogProvider"
 import CardReader from "./cardreader/CardReader"
 import Login from "./Login"
 
+
+
 export default function App() {
   const [showAddCardReader,setShowAddCardReader] = useState(false)
-  const [logPeriod, setLogPeriod] = useState("day")
   return (
     <div className = "App">
       <UserProvider>
@@ -33,10 +34,6 @@ export default function App() {
                <CardReader/>
             </Col>
             <Col>
-              <Form.Select value = {logPeriod} onChange = {e => setLogPeriod(e.target.value)}>
-                 <option>day</option>
-                 <option>week</option>
-              </Form.Select>
                <AttendanceLogProvider>
                   <AttendanceLog/>
                </AttendanceLogProvider>

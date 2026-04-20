@@ -9,6 +9,11 @@ export default function AttendanceLog() {
     const AttendanceLogProvider = useContext(AttendanceLogContext)
     const CardReaderProvider = useContext(CardReaderContext)
     const UserProvider = useContext(UserContext)
+    const [logPeriod, setLogPeriod] = useState(LOG_PERIODS[0])
+    const periodComponents = []
+    for (const period of LOG_PERIODS) {
+      periodComponents.push(<option>{period}</option>)
+    }
     useEffect(() => {
       AttendanceLogProvider.list().then(attendanceLog => {
          CardReaderProvider.list().then(cardReaders => {
@@ -40,7 +45,11 @@ export default function AttendanceLog() {
          })
        })
     },[AttendanceLogProvider, components, CardReaderProvider, UserProvider])
-    return <Table>
+    return <div>
+        <Form.Select value = {logPeriod} onChange = {e => setLogPeriod(e.target.value)}>
+                 {periodComponents}
+         </Form.Select>
+       <Table>
        <thead>
           <tr>
              <th>Name</th>
@@ -52,4 +61,5 @@ export default function AttendanceLog() {
         {components}
        </tbody>
     </Table>
+    </div>
 }

@@ -1,12 +1,10 @@
-const express = require("express")
 const {close, connect} = require("./database")
-const {post, get} = require("./common")
+const {post, get, initApp} = require("./common")
 
 const PORT = 8000
-const app = express()
 
-app.use(require("cors")())
-app.use(express.json())
+const app = initApp()
+
 
 app.listen(PORT,() => {
     connect()

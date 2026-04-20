@@ -5,13 +5,13 @@ export const CREATED = 201
 export const NOT_FOUND = 404
 export const UNAUTHORISED = 401
 
-const SERVER_ADDRESS = "http://localhost:8000/"
+export const SERVER_ADDRESS = "http://localhost:8000/"
 
-export async function get(requestName){
+export async function get(requestName, auth){
   const request = await fetch(SERVER_ADDRESS + requestName,{
     method:"GET",
     headers:{
-      "Authorization":"test"
+       "Authorization":"Bearer " + auth
     }
   })
   if (request.status !== OK) {
@@ -25,7 +25,7 @@ export async function post(requestName,body, auth){
         method:"POST",
         headers:{
           "Content-Type":"application/json",
-          "Authorization":auth
+          "Authorization":"Bearer " + auth
         },
         body:JSON.stringify(body)
     })
@@ -35,6 +35,4 @@ export async function post(requestName,body, auth){
     return request.json()
 }
 
-class RequestException extends Error {
-  
-}
+export class RequestException extends Error {}
