@@ -1,6 +1,8 @@
 import {useContext, useEffect, useState} from "react"
 import Table from "react-bootstrap/Table"
-import AttendanceLogContext from "./AttendanceLogProvider"
+import Form from "react-bootstrap/Form"
+
+import AttendanceLogContext,{PERIOD_FILTERS} from "./AttendanceLogProvider"
 import CardReaderContext from "../cardreader/CardReaderProvider"
 import UserContext from "../UserProvider"
 
@@ -9,13 +11,14 @@ export default function AttendanceLog() {
     const AttendanceLogProvider = useContext(AttendanceLogContext)
     const CardReaderProvider = useContext(CardReaderContext)
     const UserProvider = useContext(UserContext)
-    const [logPeriod, setLogPeriod] = useState(LOG_PERIODS[0])
+    console.log(PERIOD_FILTERS.day)
+    const [logPeriod, setLogPeriod] = useState(Object.keys(PERIOD_FILTERS)[0])
     const periodComponents = []
-    for (const period of LOG_PERIODS) {
+    for (const period of Object.keys(PERIOD_FILTERS)) {
       periodComponents.push(<option>{period}</option>)
     }
     useEffect(() => {
-      AttendanceLogProvider.list().then(attendanceLog => {
+      AttendanceLogProvider.list(logPeriod).then(attendanceLog => {
          CardReaderProvider.list().then(cardReaders => {
             UserProvider.listAtendees().then(attendees => {
                components.length = 0 //empty the list
@@ -44,7 +47,7 @@ export default function AttendanceLog() {
             })
          })
        })
-    },[AttendanceLogProvider, components, CardReaderProvider, UserProvider])
+    },[AttendanceLogProvider, components, CardReaderProvider, UserProvider, logPeriod])
     return <div>
         <Form.Select value = {logPeriod} onChange = {e => setLogPeriod(e.target.value)}>
                  {periodComponents}
