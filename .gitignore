@@ -1,2 +1,13 @@
 backend/node_modules
+backend/src/security.js
 frontend/node_modules
+tapper/ca.key
+tapper/ca.crt
+tapper/ca.srl
+tapper/client.key
+tapper/client.crt
+tapper/client.csr
+tapper/server.key
+tapper/server.csr
+tapper/server.crt
+tapper/v3.ext
