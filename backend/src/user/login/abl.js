@@ -5,8 +5,12 @@ const { UserNotAuthorisedException } = require("../../database")
 const { getUserByCredentials } = require("../dao")
 
 module.exports = async request =>{
-   const auth = request.headers.authorization.split(":")
-   const user = await getUserByCredentials(auth[0], auth[1])
+   const authHeader = request.headers.authorization
+   if (!authHeader) {
+      throw new UserNotAuthorisedException("no autorisation")
+   }
+   const credentials = authHeader.split(":")
+   const user = await getUserByCredentials(credentials[0], credentials[1])
    if (!user) {
       throw new UserNotAuthorisedException("invalid credentials")
    }

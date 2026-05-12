@@ -11,12 +11,11 @@ app.listen(PORT,() => {
     console.log(`server listening on port ${PORT}`)
 })
 
-post(app, "attendanceLog/add")
+post(app, "attendanceLog/add", true)
 get(app, "attendanceLog/list")
-post(app, "cardReader/add")
+post(app, "cardReader/add", true)
 get(app, "cardReader/list")
 post(app, "user/login")
-post(app, "user/logoff")
 get(app, "user/listAttendees")
 
 process.on("beforeExit", _ => close())

@@ -3,13 +3,13 @@ const {checkRole, ROLE_GATEWAY} = require("../../common")
 
 module.exports = async (request, response) =>{
    checkRole(response, ROLE_GATEWAY)
-   const body = request.body
+   const headers = request.headers
    const log = {
      _id:crypto.randomUUID(),
-     user:body.user,
-     card:body.card,
-     cardReader:body.cardReader,
-     time:body.time
+     user:null,
+     card:headers.rfid,
+     cardReader:null,
+     time:headers.time
    } 
    await create(log)
    return log

@@ -7,7 +7,9 @@ tapper/ca.srl
 tapper/client.key
 tapper/client.crt
 tapper/client.csr
-tapper/server.key
-tapper/server.csr
-tapper/server.crt
+broker/server.key
+broker/server.csr
+broker/server.crt
 tapper/v3.ext
+tapper/info
+tapper/tapper.conf
