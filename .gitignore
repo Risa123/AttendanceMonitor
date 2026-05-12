@@ -10,6 +10,7 @@ tapper/client.csr
 broker/server.key
 broker/server.csr
 broker/server.crt
+broker/ca.crt
 tapper/v3.ext
 tapper/info
 tapper/tapper.conf
